@@ -4,12 +4,12 @@ import (
   "fmt"
   "os" 
   "bufio"
-  "bytes"
+  "strings"
 )
 
 func GetSearchTerm() string {
-  var reader = bufio.NewReader(os.Stdin) 
-  var term, _ = reader.ReadString('\n')
+  reader := bufio.NewReader(os.Stdin) 
+  term, _ := reader.ReadString('\n')
   return term
 }
 
@@ -19,27 +19,38 @@ func ScanSearchTerm() string {
   return term
 }
 
-func MatchTerms(term string) (int, error) {
-  var count = 0;
+func MatchTerms(term string) (int, []string, error) {
+  count := 0;
+  snippets := make([]string, 0)
+  
   f, err := os.Open("terms.txt")
   if err != nil {
-    return 0, err
+    return 0, snippets, err
   }
   
   defer f.Close()
   scanner := bufio.NewScanner(f)
   for scanner.Scan() {
-    if bytes.Index(scanner.Bytes(), []byte(term)) >= 0 {
-      count = count + 1
+    currentLine := scanner.Text()
+    previousTerm := ""
+    for _, currentTerm := range strings.Split(currentLine, " ") {
+      if currentTerm == term {
+        count = count + 1
+        snippets = append(snippets, previousTerm + " " + currentTerm)
+      }
+      previousTerm = currentTerm      
     }
   }
   
-  return count, nil
+  return count, snippets, nil
 }
 
 func main() {
   fmt.Print("Enter term to search: ")
-  var term = ScanSearchTerm()
-  var count, _ = MatchTerms(term)
+  term := ScanSearchTerm()
+  count, snippets, _ := MatchTerms(term)
   fmt.Println("Found", count, "matches for term", term)
+  for i, snippet := range snippets {
+    fmt.Println("Match", i, ":", snippet)
+  }
 }
