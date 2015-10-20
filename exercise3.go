@@ -45,7 +45,7 @@ func MatchTerms(term string) (int, []string, error) {
   return count, snippets, nil
 }
 
-func exercise2() {
+func exercise3() {
   fmt.Print("Enter term to search: ")
   term := ScanSearchTerm()
   count, snippets, _ := MatchTerms(term)
