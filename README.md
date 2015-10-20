@@ -20,8 +20,9 @@ I've long been curious whether a more practical progression of concepts and cons
 1. Date and time
 
 Exercise 1: Write an application that loops the natural numbers to 100 and prints only the values evenly divisible by 5.
+
 Exercise 2: Take the previous application and split the loop logic into a method that accepts an arbitrary upper limit, the required divisor, and returns a comma-separated string of the form “x, y, z, …”
+
 Exercise 3: Write an application that reads a file containing some paragraphs of text.  Read a word from the console and identify the matches in the file (case insensitive).  Print out the matches with context; in other words, print the match and the word immediately before it.  Write to the console the total number of matches found.
+
 Exercise 4: Factor the previous application so that matching is handled by a dedicated class implementing a specific interface.
-
-
