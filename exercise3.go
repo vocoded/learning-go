@@ -19,37 +19,38 @@ func ScanSearchTerm() string {
   return term
 }
 
-func MatchTerms(term string) (int, []string, error) {
-  count := 0;
+func MatchLine(line string, term string, snippets *[]string) {
+    previousTerm := ""
+    for _, currentTerm := range strings.Split(line, " ") {
+      if currentTerm == term {
+        *snippets = append(*snippets, previousTerm + " " + currentTerm)
+      }
+      previousTerm = currentTerm      
+    }  
+}
+
+func MatchTerms(term string) []string {
   snippets := make([]string, 0)
   
   f, err := os.Open("terms.txt")
   if err != nil {
-    return 0, snippets, err
+    return snippets
   }
   
   defer f.Close()
   scanner := bufio.NewScanner(f)
   for scanner.Scan() {
-    currentLine := scanner.Text()
-    previousTerm := ""
-    for _, currentTerm := range strings.Split(currentLine, " ") {
-      if currentTerm == term {
-        count = count + 1
-        snippets = append(snippets, previousTerm + " " + currentTerm)
-      }
-      previousTerm = currentTerm      
-    }
+    MatchLine(scanner.Text(), term, &snippets)
   }
   
-  return count, snippets, nil
+  return snippets
 }
 
 func exercise3() {
   fmt.Print("Enter term to search: ")
   term := ScanSearchTerm()
-  count, snippets, _ := MatchTerms(term)
-  fmt.Println("Found", count, "matches for term", term)
+  snippets := MatchTerms(term)
+  fmt.Println("Found", len(snippets), "matches for term", term)
   for i, snippet := range snippets {
     fmt.Println("Match", i, ":", snippet)
   }
