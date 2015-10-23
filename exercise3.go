@@ -8,12 +8,6 @@ import (
 )
 
 func GetSearchTerm() string {
-  reader := bufio.NewReader(os.Stdin) 
-  term, _ := reader.ReadString('\n')
-  return term
-}
-
-func ScanSearchTerm() string {
   var term string
   fmt.Scanln(&term)
   return term
@@ -48,7 +42,7 @@ func MatchTerms(term string) []string {
 
 func exercise3() {
   fmt.Print("Enter term to search: ")
-  term := ScanSearchTerm()
+  term := GetSearchTerm()
   snippets := MatchTerms(term)
   fmt.Println("Found", len(snippets), "matches for term", term)
   for i, snippet := range snippets {
