@@ -26,3 +26,5 @@ Exercise 2: Take the previous application and split the loop logic into a method
 Exercise 3: Write an application that reads a file containing some paragraphs of text.  Read a word from the console and identify the matches in the file (case insensitive).  Print out the matches with context; in other words, print the match and the word immediately before it.  Write to the console the total number of matches found.
 
 Exercise 4: Factor the previous application so that matching is handled by a dedicated class implementing a specific interface.
+
+Exercise 5: Modify the previous application so that it counts the number of unique words in the given file. Words are defined as a non-zero length sequence of alphabetic characters.
