@@ -2,8 +2,6 @@ package main
 
 import (
   "fmt"
-  "os" 
-  "bufio"
   "strings"
 )
 
@@ -16,30 +14,7 @@ type FileMatcher struct {
 }
 
 func (m *FileMatcher) Match(term string) []string {
-  snippets := make([]string, 0)
-  
-  f, err := os.Open(m.sourceFile)
-  if err != nil {
-    return snippets
-  }
-  
-  defer f.Close()
-  scanner := bufio.NewScanner(f)
-  for scanner.Scan() {
-    m.MatchLine(scanner.Text(), term, &snippets)
-  }
-  
-  return snippets  
-}
-
-func (m *FileMatcher) MatchLine(line string, term string, snippets *[]string) {
-    previousTerm := ""
-    for _, currentTerm := range strings.Split(line, " ") {
-      if currentTerm == term {
-        *snippets = append(*snippets, previousTerm + " " + currentTerm)
-      }
-      previousTerm = currentTerm      
-    }  
+  return MatchTermsFromFile(m.sourceFile, term)
 }
 
 func exercise4() {
@@ -48,7 +23,7 @@ func exercise4() {
   fmt.Print("Enter term to search: ")
   fmt.Scanln(&term)
   
-  snippets := matcher.Match(term)
+  snippets := matcher.Match(strings.ToLower(term))
   fmt.Println("Found", len(snippets), "matches for term", term)
   for i, snippet := range snippets {
     fmt.Println("Match", i, ":", snippet)

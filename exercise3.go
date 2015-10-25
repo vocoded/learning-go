@@ -16,17 +16,18 @@ func GetSearchTerm() string {
 func MatchLine(line string, term string, snippets *[]string) {
     previousTerm := ""
     for _, currentTerm := range strings.Split(line, " ") {
-      if currentTerm == term {
+      if strings.ToLower(currentTerm) == term {
         *snippets = append(*snippets, previousTerm + " " + currentTerm)
       }
       previousTerm = currentTerm      
     }  
 }
 
-func MatchTerms(term string) []string {
+func MatchTermsFromFile(file string, term string) []string {
   snippets := make([]string, 0)
+  term = strings.ToLower(term)
   
-  f, err := os.Open("terms.txt")
+  f, err := os.Open(file)
   if err != nil {
     return snippets
   }
@@ -43,7 +44,7 @@ func MatchTerms(term string) []string {
 func exercise3() {
   fmt.Print("Enter term to search: ")
   term := GetSearchTerm()
-  snippets := MatchTerms(term)
+  snippets := MatchTermsFromFile("terms.txt", term)
   fmt.Println("Found", len(snippets), "matches for term", term)
   for i, snippet := range snippets {
     fmt.Println("Match", i, ":", snippet)
