@@ -13,32 +13,37 @@ func GetSearchTerm() string {
   return term
 }
 
-func MatchLine(line string, term string, snippets *[]string) {
-    previousTerm := ""
-    for _, currentTerm := range strings.Split(line, " ") {
-      if strings.ToLower(currentTerm) == term {
-        *snippets = append(*snippets, previousTerm + " " + currentTerm)
-      }
-      previousTerm = currentTerm      
-    }  
-}
-
 func MatchTermsFromFile(file string, term string) []string {
   snippets := make([]string, 0)
   term = strings.ToLower(term)
-  
+
+  previousTerm := ""  
+  matchAction := func(currentTerm string) {
+    if strings.ToLower(currentTerm) == term {
+      snippets = append(snippets, previousTerm + " " + currentTerm)
+    }
+    previousTerm = currentTerm    
+  }
+
+  IterateFile(file, matchAction)  
+  return snippets
+}
+
+func IterateFile(file string, action func(term string)) error {
   f, err := os.Open(file)
   if err != nil {
-    return snippets
+    return err
   }
   
   defer f.Close()
   scanner := bufio.NewScanner(f)
   for scanner.Scan() {
-    MatchLine(scanner.Text(), term, &snippets)
+    for _, currentTerm := range strings.Split(scanner.Text(), " ") {
+      action(currentTerm)
+    }  
   }
   
-  return snippets
+  return nil
 }
 
 func exercise3() {
