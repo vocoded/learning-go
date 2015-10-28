@@ -17,6 +17,7 @@ func (m *FileMatcher) Match(term string) []string {
   return MatchTermsFromFile(m.sourceFile, term)
 }
 
+// Building on the previous application, this adds a class-based implementation
 func exercise4() {
   var term string
   matcher := FileMatcher {"terms.txt"}

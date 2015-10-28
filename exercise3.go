@@ -46,6 +46,7 @@ func IterateFile(file string, action func(term string)) error {
   return nil
 }
 
+// A more featured example, making use of console I/O, file I/O, and function arguments
 func exercise3() {
   fmt.Print("Enter term to search: ")
   term := GetSearchTerm()

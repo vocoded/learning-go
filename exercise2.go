@@ -7,6 +7,7 @@ import (
 )
 
 func FindMultiples(limit int, divisor int) string {
+  // Create a slice to hold the intermediate values
   multiples := []string {}
   for i := 1; i <= limit; i++ {
     if i % divisor == 0 {
