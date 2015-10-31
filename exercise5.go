@@ -30,6 +30,7 @@ func (m *FileTermFinder) Find() []string {
   return Keys(wordMap)
 }
 
+// Oh my is this painful - sadly Go wasn't built to be expressive
 func Keys(m map[string]bool) []string {
   keys := make([]string, 0, len(m))
   for k := range m {
@@ -38,7 +39,7 @@ func Keys(m map[string]bool) []string {
   return keys
 }
 
-// Now we explore the map type a bit along with a gentle regular expression
+// Explore the map type a bit along with a gentle regular expression
 func exercise5() {
   counter := FileTermFinder {"terms.txt"}  
   words := len(counter.Find())
