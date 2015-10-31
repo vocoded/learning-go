@@ -29,4 +29,6 @@ Exercise 4: Factor the previous application so that matching is handled by a ded
 
 Exercise 5: Modify the previous application so that it counts the number of unique words in the given file. Words are defined as a non-zero length sequence of alphabetic characters.
 
-Exericse 6: Use the previous application to print a sorted list of the unique words in the given file.
+Exercise 6: Use the previous application to print a sorted list of the unique words in the given file.
+
+Exercise 7: Write an application that downloads a URL entered from the command line and times how long it takes
