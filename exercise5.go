@@ -6,19 +6,19 @@ import (
   "strings"
 )
 
-type TermCounter interface {
-  Count() int
+type TermFinder interface {
+  Find() []string
 }
 
-type FileTermCounter struct {
+type FileTermFinder struct {
   sourceFile string
 }
 
-func (m *FileTermCounter) Count() int {
+func (m *FileTermFinder) Find() []string {
   wordMap := make(map[string]bool)
   wordRegex, _ := regexp.Compile("\\W")
 
-  countAction := func(term string) {
+  findAction := func(term string) {
     // This is fairly rough; won't help us with hyphenated words or contractions
     term = wordRegex.ReplaceAllString(term, "")
     if term != "" {
@@ -26,13 +26,21 @@ func (m *FileTermCounter) Count() int {
     }    
   }
 
-  IterateFile(m.sourceFile, countAction)
-  return len(wordMap)
+  IterateFile(m.sourceFile, findAction)
+  return Keys(wordMap)
+}
+
+func Keys(m map[string]bool) []string {
+  keys := make([]string, 0, len(m))
+  for k := range m {
+    keys = append(keys, k)
+  }
+  return keys
 }
 
 // Now we explore the map type a bit along with a gentle regular expression
 func exercise5() {
-  counter := FileTermCounter {"terms.txt"}  
-  words := counter.Count()
+  counter := FileTermFinder {"terms.txt"}  
+  words := len(counter.Find())
   fmt.Println("Found", words, "unique words in file")
 }
