@@ -31,4 +31,6 @@ Exercise 5: Modify the previous application so that it counts the number of uniq
 
 Exercise 6: Use the previous application to print a sorted list of the unique words in the given file.
 
-Exercise 7: Write an application that downloads a URL entered from the command line and times how long it takes
+Exercise 7: Write an application that downloads a URL entered from the command line and times how long it takes.
+
+Exercise 8: Create a package (or equivalent) with a utility that reads input from the command line and returns it.  Call this method from the main program.
