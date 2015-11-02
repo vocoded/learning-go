@@ -13,4 +13,5 @@ func main() {
   exercise5()
   exercise6()
   exercise7()
+  exercise8()
 }
