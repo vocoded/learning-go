@@ -1,10 +1,16 @@
 package utils
 
-import "fmt"
+import (
+  "fmt"
+  "os"
+  "bufio"
+)
 
 func GetInput(message string) string {
-  var input string
   fmt.Print(message)
-  fmt.Scanln(&input)
-  return input
+  scanner := bufio.NewScanner(os.Stdin)
+  if scanner.Scan() {
+    return scanner.Text()
+  }
+  return ""
 }

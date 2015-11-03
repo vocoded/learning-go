@@ -7,10 +7,13 @@ import (
   "strings"
 )
 
-func GetSearchTerm() string {
+func GetSearchTerm() (string, error) {
   var term string
-  fmt.Scanln(&term)
-  return term
+  if _, err := fmt.Scanln(&term); err != nil {
+    fmt.Println("Please enter a single term")
+    return "", err
+  }
+  return term, nil
 }
 
 func MatchTermsFromFile(file string, term string) []string {
@@ -46,13 +49,19 @@ func IterateFile(file string, action func(term string)) error {
   return nil
 }
 
-// A more featured example, making use of console I/O, file I/O, and function arguments
-func exercise3() {
-  fmt.Print("Enter term to search: ")
-  term := GetSearchTerm()
+func GetTermMatches(term string) {
   snippets := MatchTermsFromFile("terms.txt", term)
   fmt.Println("Found", len(snippets), "matches for term", term)
   for i, snippet := range snippets {
     fmt.Println("Match", i, ":", snippet)
+  }
+}
+
+// A more featured example, making use of console I/O, file I/O, and function arguments
+func exercise3() {
+  fmt.Print("Enter term to search: ")
+  term, err := GetSearchTerm()
+  if err == nil {
+    GetTermMatches(term)
   }
 }
