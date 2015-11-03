@@ -1,8 +1,8 @@
 # learning-go
 
-Many standard approaches for language learning focus on a bottom-up, comprehensive treatment of internals.  This is especially valuable for folks new to programming, but can be a trial for others with development proficiency.  
+Many standard approaches for language learning focus on a bottom-up, comprehensive look at internals.  In these programs, by chapter two you've not only seen how to add and multiply numbers, but how to arithmetic left and right shift them as well.  This can be valuable for folks new to programming.  It simply gets in the way for those with development proficiency.  
 
-I've long been curious whether a more practical progression of concepts and constructs would be better suited to the experienced audience.  This project outlines one such course for a language generating quite a bit of press these days - Go.
+I've been curious whether a more practical progression of concepts and constructs would be better suited to the experienced audience.  This project outlines one such course for a language generating quite a bit of press these days - Go.
 
 ## Basics
 
