@@ -10,7 +10,6 @@ import (
 func GetSearchTerm() (string, error) {
   var term string
   if _, err := fmt.Scanln(&term); err != nil {
-    fmt.Println("Please enter a single term")
     return "", err
   }
   return term, nil

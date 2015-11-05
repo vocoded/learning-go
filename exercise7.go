@@ -20,11 +20,11 @@ func exercise7() {
   var url string
   
   fmt.Print("Enter URL to download: ")
-  fmt.Scanln(&url)
-
-  start := time.Now()
-  body := ReadUrl(url)
-  elapsed := time.Since(start)
+  if _, err := fmt.Scanln(&url); err == nil {
+    start := time.Now()
+    body := ReadUrl(url)
+    elapsed := time.Since(start)
   
-  fmt.Println("Took", elapsed, "to retrieve", len(body), "bytes")
+    fmt.Println("Took", elapsed, "to retrieve", len(body), "bytes")
+  }
 }

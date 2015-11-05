@@ -31,6 +31,6 @@ func exercise4() {
   var term string
   fmt.Print("Enter term to search: ")
   if _, err := fmt.Scanln(&term); err == nil {
-    MatchTermsViaClass(term) 
+    MatchTermsViaClass(term)
   }  
 }
