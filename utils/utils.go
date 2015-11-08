@@ -14,3 +14,11 @@ func GetInput(message string) string {
   }
   return ""
 }
+
+func GetKeys(m map[string]bool) []string {
+  keys := make([]string, 0, len(m))
+  for k := range m {
+    keys = append(keys, k)
+  }
+  return keys
+}

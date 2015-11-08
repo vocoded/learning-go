@@ -1,6 +1,6 @@
 # learning-go
 
-Many standard approaches for language learning focus on a bottom-up, comprehensive look at internals.  In these programs, by chapter two you've not only seen how to add and multiply numbers, but how to arithmetic left and right shift them as well.  This can be valuable for folks new to programming.  It simply gets in the way for those with development proficiency.  
+Many approaches to language learning focus on a bottom-up, comprehensive study of internals.  In these programs, by chapter two you've not only seen how to add and multiply numbers, but how to arithmetic left and right shift them as well.  This can be valuable for folks new to programming.  It simply gets in the way for those with development proficiency.  
 
 I've been curious whether a more practical progression of concepts and constructs would be better suited to the experienced audience.  This project outlines one such course for a language generating quite a bit of press these days - Go.
 
@@ -34,3 +34,5 @@ Exercise 6: Use the previous application to print a sorted list of the unique wo
 Exercise 7: Write an application that downloads a URL entered from the command line and times how long it takes.
 
 Exercise 8: Create a package (or equivalent) with a utility that reads input from the command line.  Call this method from the main program and print the reverse of it.
+
+Exercise 9: Use the new utility method to get a command line string, then write a file containing all the unique substrings of length 3
