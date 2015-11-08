@@ -25,14 +25,18 @@ func FindUniqueSubstrings(input string, length int) []string {
     return []string {}
   }
   
-  substrings := make(map[string]bool)
+  substrings := make([]string, 0, len(input) / length)
+  substringMap := make(map[string]bool)
   
   for i := 0; i <= len(input) - length; i++ {
     str := input[i:i+length]
-    substrings[str] = true
+    if _, exists := substringMap[str]; !exists {
+      substringMap[str] = true;
+      substrings = append(substrings, str)
+    }
   }
   
-  return utils.GetKeys(substrings)
+  return substrings
 }
 
 // A little more string fun along with file creation
