@@ -41,7 +41,7 @@ func FindUniqueSubstrings(input string, length int) []string {
 
 // A little more string fun along with file creation
 func exercise9() {
-  input := utils.GetInput("Enter some text: ")
+  input := utils.GetDefaultInput()
   substrings := FindUniqueSubstrings(input, 3)
   WriteFile(substrings)
 }

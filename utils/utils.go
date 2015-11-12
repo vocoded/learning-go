@@ -6,6 +6,11 @@ import (
   "bufio"
 )
 
+// No overloading allowed in Go!
+func GetDefaultInput() string {
+  return GetInput("Enter some text: ")
+}
+
 func GetInput(message string) string {
   fmt.Print(message)
   scanner := bufio.NewScanner(os.Stdin)
