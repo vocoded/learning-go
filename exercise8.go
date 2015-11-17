@@ -17,7 +17,7 @@ func Reverse(input string) string {
 
 // The old standby - reverse a string
 func exercise8() {
-  input := utils.GetInput("Enter some text: ")
+  input := utils.GetDefaultInput()
   reverse := Reverse(input)
   fmt.Println("The reverse is", reverse)
 }
