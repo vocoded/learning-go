@@ -15,16 +15,20 @@ func ReadUrl(url string) []byte {
   return body
 }
 
+func TimeReadUrl(url string) {
+  start := time.Now()
+  body := ReadUrl(url)
+  elapsed := time.Since(start)
+  
+  fmt.Println("Took", elapsed, "to retrieve", len(body), "bytes")  
+}
+
 // Download a given file and record how long it takes
 func exercise7() {
   var url string
   
   fmt.Print("Enter URL to download: ")
   if _, err := fmt.Scanln(&url); err == nil {
-    start := time.Now()
-    body := ReadUrl(url)
-    elapsed := time.Since(start)
-  
-    fmt.Println("Took", elapsed, "to retrieve", len(body), "bytes")
+    TimeReadUrl(url)
   }
 }
