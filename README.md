@@ -19,6 +19,8 @@ I've been curious whether a more practical progression of concepts and construct
 1. Basic classes (if supported) - declaration, inheritance/mixins, dispatch/polymorphism, visibility, static vs instance
 1. Date and time
 
+## Exercises
+
 Exercise 1: Write an application that loops the natural numbers to 100 and prints only the values evenly divisible by 5.
 
 Exercise 2: Take the previous application and split the loop logic into a method that accepts an arbitrary upper limit, the required divisor, and returns a comma-separated string of the form “x, y, z, …”
@@ -33,8 +35,8 @@ Exercise 6: Use the previous application to print a sorted list of the unique wo
 
 Exercise 7: Write an application that downloads a URL entered from the command line and times how long it takes.
 
-Exercise 8: Create a package (or equivalent) with a utility that reads input from the command line.  Call this method from the main program and print the reverse of it.
+Exercise 8: Create a package (or equivalent) with a utility that reads input from the command line.  Call this method from the main program and print the reverse of the string read from the command line.
 
-Exercise 9: Use the new utility method to get a command line string, then write a file containing all the unique substrings of length 3
+Exercise 9: Use the new utility method to get a command line string, then write a file containing all the unique substrings of length 3.
 
-Exercise 10: Write an application that iterates random numbers to find a multiple of 99 less than 1000, on a background thread
+Exercise 10: Write an application that iterates random numbers to find a multiple of 99 less than 1000, on a background thread, and print the result.

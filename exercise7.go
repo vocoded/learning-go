@@ -8,11 +8,15 @@ import (
 )
 
 func ReadUrl(url string) []byte {
-  response, _ := http.Get(url)
-  defer response.Body.Close()
-  body, _ := ioutil.ReadAll(response.Body)
+  response, err := http.Get(url)
+  if err == nil {
+    defer response.Body.Close()
+    body, _ := ioutil.ReadAll(response.Body)
   
-  return body
+    return body
+  }
+
+  return make([]byte, 0, 0)
 }
 
 func TimeReadUrl(url string) {
