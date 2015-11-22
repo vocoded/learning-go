@@ -36,3 +36,5 @@ Exercise 7: Write an application that downloads a URL entered from the command l
 Exercise 8: Create a package (or equivalent) with a utility that reads input from the command line.  Call this method from the main program and print the reverse of it.
 
 Exercise 9: Use the new utility method to get a command line string, then write a file containing all the unique substrings of length 3
+
+Exercise 10: Write an application that iterates random numbers to find a multiple of 99 less than 1000, on a background thread
