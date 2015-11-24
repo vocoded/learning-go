@@ -1,6 +1,6 @@
 # learning-go
 
-Many approaches to language learning focus on a bottom-up, comprehensive study of internals.  In these programs, by chapter two you've not only seen how to add and multiply numbers, but how to arithmetic left and right shift them as well.  This can be valuable for folks new to programming.  It simply gets in the way for those with development proficiency.  
+The traditional approach to programming language learning usually focuses on a bottom-up, comprehensive study of internals.  For example, you not only see how to add and multiply numbers, you are buried in the detail of how to arithmetic left and right shift them too.  This can be valuable for folks new to programming.  It doesn't serve those with development proficiency nearly as well.  
 
 I've been curious whether a more practical progression of concepts and constructs would be better suited to the experienced audience.  This project outlines one such course for a language generating quite a bit of press these days - Go.
 
