@@ -16,4 +16,5 @@ func main() {
   exercise8()
   exercise9()
   exercise10()
+  fmt.Println("Completed all exercises")
 }
