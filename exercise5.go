@@ -26,7 +26,10 @@ func (m *FileTermFinder) Find() []string {
     }    
   }
 
-  IterateFile(m.sourceFile, findAction)
+  if err := IterateFile(m.sourceFile, findAction); err != nil {
+    return []string {}
+  }
+
   return Keys(wordMap)
 }
 
