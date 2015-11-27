@@ -14,7 +14,7 @@ type FileTermFinder struct {
   sourceFile string
 }
 
-func (m *FileTermFinder) Find() []string {
+func (m FileTermFinder) Find() []string {
   wordMap := make(map[string]bool)
   wordRegex, _ := regexp.Compile("\\W")
 
@@ -42,9 +42,13 @@ func Keys(m map[string]bool) []string {
   return keys
 }
 
+func FindFileTerms(finder TermFinder) {
+  words := len(finder.Find())
+  fmt.Println("Found", words, "unique words in file")
+}
+
 // Explore the map type a bit along with a gentle regular expression
 func exercise5() {
-  counter := FileTermFinder {"terms.txt"}  
-  words := len(counter.Find())
-  fmt.Println("Found", words, "unique words in file")
+  finder := FileTermFinder {"terms.txt"}
+  FindFileTerms(finder)
 }
