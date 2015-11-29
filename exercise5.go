@@ -6,31 +6,31 @@ import (
   "strings"
 )
 
+var wordRegex, _ = regexp.Compile("\\W")
+
 type TermFinder interface {
   Find() []string
 }
 
 type FileTermFinder struct {
   sourceFile string
+  wordMap map[string]bool
+}
+
+func (m FileTermFinder) MatchTerm(term string) {
+  // This is fairly rough; won't help us with hyphenated words or contractions
+  term = wordRegex.ReplaceAllString(term, "")
+  if term != "" {
+    m.wordMap[strings.ToLower(term)] = true        
+  }  
 }
 
 func (m FileTermFinder) Find() []string {
-  wordMap := make(map[string]bool)
-  wordRegex, _ := regexp.Compile("\\W")
-
-  findAction := func(term string) {
-    // This is fairly rough; won't help us with hyphenated words or contractions
-    term = wordRegex.ReplaceAllString(term, "")
-    if term != "" {
-      wordMap[strings.ToLower(term)] = true        
-    }    
-  }
-
-  if err := IterateFile(m.sourceFile, findAction); err != nil {
+  if err := IterateFile(m.sourceFile, m.MatchTerm); err != nil {
     return []string {}
   }
 
-  return Keys(wordMap)
+  return Keys(m.wordMap)
 }
 
 // Oh my is this painful - sadly Go wasn't built to be expressive
@@ -49,6 +49,6 @@ func FindFileTerms(finder TermFinder) {
 
 // Explore the map type a bit along with a gentle regular expression
 func exercise5() {
-  finder := FileTermFinder {"terms.txt"}
+  finder := FileTermFinder {"terms.txt", make(map[string]bool)}
   FindFileTerms(finder)
 }
